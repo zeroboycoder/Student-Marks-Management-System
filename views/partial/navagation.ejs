@@ -1,0 +1,53 @@
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">SMMS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLink"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navLink">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item dropdown <%= path === '/inputMarks' ? 'active' : '' %>">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Input
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/inputMarkOption?semester=First Semester">First Semester</a>
+            <a class="dropdown-item" href="/inputMarkOption?semester=Second Semester">Second Semester</a>
+          </div>
+        </li>
+
+        <li class="nav-item <%= path === '/showMarks' ? 'active' : '' %>">
+          <a class="nav-link" href="/showMarkOption">Show <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item <%= path === '/searchStudent' ? 'active' : '' %>">
+          <a class="nav-link" href="/searchStudentOption">Search <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      
+      <ul class="navbar-nav">
+        <% if(!isAuthenticated) { %>
+          <li class="nav-item <%= path === '/signup' ? 'active' : '' %>">
+            <a class="nav-link" href="/signup">Sign up <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item <%= path === '/login' ? 'active' : '' %>">
+            <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+          </li>
+        <% } else { %>
+          <form action="/logout" method="post">
+            <li class="nav-item <%= path === '/logout' ? 'active' : '' %>">
+              <button class="btn btn-dark" type="submit">Logout</button>
+            </li>
+          </form>
+        <% } %>
+        
+      </ul>
+    
+    </div>
+  </nav>

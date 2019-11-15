@@ -1,0 +1,32 @@
+<%- include("./partial/header.ejs") %>
+
+<%- include("./partial/navagation.ejs") %>
+
+<% if(errorMessage) { %>
+    <div class="message message-error">
+        <%= errorMessage %>
+    </div>
+<% } %>
+
+<h1 style="margin-top: 1rem; text-align: center;">
+    Search Student
+</h1>
+
+<div class="option">
+    <div class="form-option--nobgcolor">
+        <form action="/postSearchStudent" method="POST">
+            <div class="form-group">
+                <label><h4>Student ID</h4></label>
+                <input class="form-control" type="text" name="studentId" required>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary form-control">Search</button>
+            </div>
+            <div class="form-group">
+                <a href="/" class="btn btn-outline-danger form-control">Cancle</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include("./partial/footer.ejs") %>

@@ -1,0 +1,53 @@
+
+<% if(option === 'input') { %>
+    <div style="width: 100%;">
+        <h2 style="text-align:center; margin: 1rem auto;">Input Student's Marks Option</h2>
+    </div>
+<% } else { %>
+    <h2 style="text-align:center; margin: 1rem auto;">Show Student's Marks Option</h2>
+<% } %>
+
+<div class="option">
+    <% if(option === 'input') { %>
+        <h2 id="option-examType"><%= examType %></h2>
+    <% } %>
+    <div class="<%= option === 'input' ? 'form-option' : 'form-option--nobgcolor' %>">
+        <form 
+        action="<% if(option === 'input') { %>
+            /inputMarkRoute
+        <% } else if(option === 'show') { %>
+            /students
+        <% } %>"
+        method="POST">
+            <label><h5>Major :</h5></label> <br>
+            <select name="major">
+                <option value="Civil">Civil</option>
+                <option value="EC">EC</option>
+                <option value="EP">EP</option>
+                <option value="Mechnical">Mechnical</option>
+                <option value="IT">IT</option>
+            </select>
+            <hr>
+            
+            <label><h5>Year :</h5></label> <br>
+            <select name="year">
+                <option value="First Year">First Year</option>
+                <option value="Second Year">Second Year</option>
+                <option value="Third Year">Third Year</option>
+                <option value="Fourth Year">Fourth Year</option>
+                <option value="Fifth Year">Fifth Year</option>
+                <option value="Sixth Year">Sixth Year</option>
+            </select>
+            <hr>
+    
+            <label><h5>Acadamic Year :</h5></label> <br>
+            <input type="text" name="acadamicYear" placeholder="2019-2020" required>
+            <hr>
+    
+            <button class="btn btn-dark">Submit</button>
+            <% if(option === 'input') { %>
+                <input type="hidden" name="examType" value="<%= examType %>">
+            <% } %>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<%- include("../partial/header.ejs") %>
+
+<%- include("../partial/navagation.ejs") %>
+
+<% if(message) { %>
+    <div class="message <%= errorCondition === true ? 'message-error' : 'message-success' %>">
+        <%= message %>
+    </div>
+<% } %>
+
+<h1 class="center">Login Form</h1>
+<div class="option">
+    <div class="form form-option--nobgcolor">
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="email">Email</label> <br>
+                <input class="form-control" type="email" name="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label> <br>
+                <input class="form-control" type="password" name="password" id="password" required>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-secondary" type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include("../partial/footer.ejs") %>

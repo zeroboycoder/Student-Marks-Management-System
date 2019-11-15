@@ -1,0 +1,150 @@
+<%- include("../partial/header.ejs") %>
+
+<%- include("../partial/navagation.ejs") %>
+
+<h1 class="center">Mechanical (<%= year %>)</h1>
+<h2 class="center"><%= acadamicYear %> - <%= examType %></h2>
+
+<div style="max-width:90%; width: 25rem; margin : 1rem auto;">
+    <form action="<%= path === '/inputMarks' ? '/postInputMark' : '/postUpdateMark' %>" method="POST">
+        <label>Student's ID</label> <br>
+        <input type="text" name="studentId" class="form-control" value="<%if(path === "/editMarks"){%><%=studentId%><%}%>" required> <br>
+
+        <label>Student Name</label> <br>
+        <input type="text" name="studentName" class="form-control" value="<%if(path === "/editMarks"){%><%=name%><%}%>" required> <br>
+
+        <label>Roll No</label> <br>
+        <input type="text" name="rollno" class="form-control" value="<%if(path === "/editMarks"){%><%=rollno%><%}%>" required> <br>
+
+        <% if(year === "First Year") { %>
+                <label>Myanmar</label> <br>
+                <input type="text" name="data[Myanmar]" class="form-control" value="<% if(path === '/editMarks'){%><%=marks[0] %><%}%>" required> <br>
+
+                <label>English</label> <br>
+                <input type="text" name="data[English]" class="form-control" value="<%if(path === '/editMarks'){%><%=marks[1]%><%}%>" required> <br>
+
+                <label>Engineering Mathematics II</label> <br>
+                <input type="text" name="data[Engineering Mathematics II]" class="form-control" value="<% if(path === '/editMarks'){%><%=marks[2]%><%} %>"  required> <br>
+
+                <label>Engineering Chemistry II</label> <br>
+                <input type="text" name="data[Engineering Chemistry II]" class="form-control" value="<% if(path === '/editMarks'){%><%= marks[3] %><%} %>" required> <br>
+
+                <label>Engineering Physics</label> <br>
+                <input type="text" name="data[Engineering Physics]" class="form-control" value="<% if(path === '/editMarks'){%><%=marks[4]%><%} %>" required> <br>
+
+                <label>Basic Engineering Drawing</label> <br>
+                <input type="text" name="data[Basic Engineering Drawing]" class="form-control" value="<% if(path === '/editMarks'){%><%= marks[5] %><%} %>" required> <br>
+
+            <% }  else if(year === "Second Year"){ %>
+
+                <label>English</label> <br>
+                <input type="text" name="data[English]" class="form-control" value="<% if(path === '/editMarks'){%><%=marks[0] %><%}%>" required> <br>
+
+                <label>Engineering Mathematics IV</label> <br>
+                <input type="text" name="data[Engineering Mathematics IV]" class="form-control" value="<%if(path === '/editMarks'){%><%=marks[1]%><%}%>" required> <br>
+
+                <label>Engineering Materials</label> <br>
+                <input type="text" name="data[Engineering Materials]" class="form-control" value="<% if(path === '/editMarks'){%><%= marks[2] %><%} %>" required> <br>
+
+                <label>Applied Electrical Engineering II</label> <br>
+                <input type="text" name="data[Applied Electrical Engineering II]" class="form-control" value="<% if(path === '/editMarks'){%><%=marks[3]%><%} %>" required> <br>
+
+                <label>Engineering Mechanies</label> <br>
+                <input type="text" name="data[Engineering Mechanies]" class="form-control" value="<% if(path === '/editMarks'){%><%=marks[4]%><%} %>" required> <br>
+
+                <label>Workshop Technology</label> <br>
+                <input type="text" name="data[Workshop Technology]" class="form-control" value="<% if(path === '/editMarks'){%><%= marks[5] %><%} %>" required> <br>
+
+                <label>Machine Drawing</label> <br>
+                <input type="text" name="data[Machine Drawing]" class="form-control" value="<% if(path === '/editMarks'){%><%= marks[6] %><%} %>" required> <br>
+
+            <% } else if(year === "Third Year") { %>
+                <label>English</label> <br>
+                <input type="text" name="data[English]" class="form-control" value="<% if(path === '/editMarks'){%><%=marks[0] %><%}%>" required> <br>
+
+                <label>Engineering Mathematics VI</label> <br>
+                <input type="text" name="data[Engineering Mathematics VI]" class="form-control" value="<%if(path === '/editMarks'){%><%=marks[1]%><%}%>" required> <br>
+
+                <label>Theory of Machines I</label> <br>
+                <input type="text" name="data[Theory of Machines I]" class="form-control" value="<% if(path === '/editMarks'){%><%=marks[2]%><%} %>" required> <br>
+
+                <label>Strength of Materials I</label> <br>
+                <input type="text" name="data[Strength of Materials I]" class="form-control" value="<% if(path === '/editMarks'){%><%=marks[3]%><%} %>" required> <br>
+
+                <label>Engineering Materials</label> <br>
+                <input type="text" name="data[Engineering Materials]" class="form-control" value="<% if(path === '/editMarks'){%><%= marks[4] %><%} %>" required> <br>
+
+                <label>Analogue and Digital Electronics II</label> <br>
+                <input type="text" name="data[Analogue and Digital Electronics II]" class="form-control" value="<% if(path === '/editMarks'){%><%= marks[5] %><%} %>" required> <br>
+
+                <label>Production Technology</label> <br>
+                <input type="text" name="data[Production Technology]" class="form-control" value="<% if(path === '/editMarks'){%><%= marks[6] %><%} %>" required> <br>
+
+                <label>Engineering Thermodynamics II</label> <br>
+                <input type="text" name="data[Engineering Thermodynamics II]" class="form-control" value="<% if(path === '/editMarks'){%><%= marks[7] %><%} %>" required> <br>
+
+            <% } else if(year === "Fourth Year") { %>
+                <label>English</label> <br>
+                <input type="text" name="data[English]" class="form-control" value="<% if(path === '/editMarks'){%><%=marks[0] %><%}%>" required> <br>
+
+                <label>Engineering Mathematics VIII</label> <br>
+                <input type="text" name="data[Engineering Mathematics VIII]" class="form-control" value="<%if(path === '/editMarks'){%><%=marks[1]%><%}%>" required> <br>
+
+                <label>Design of Machine Elements</label> <br>
+                <input type="text" name="data[Design of Machine Elements]" class="form-control" value="<% if(path === '/editMarks'){%><%=marks[2]%><%} %>" required> <br>
+
+                <label>Manufacturing System and Automations</label> <br>
+                <input type="text" name="data[Manufacturing System and Automations]" class="form-control" value="<% if(path === '/editMarks'){%><%=marks[3]%><%} %>" required> <br>
+
+                <label>Heat Transfer</label> <br>
+                <input type="text" name="data[Heat Transfer]" class="form-control" value="<% if(path === '/editMarks'){%><%= marks[4] %><%} %>" required> <br>
+
+                <label>Strength of Materials II</label> <br>
+                <input type="text" name="data[Strength of Materials II]" class="form-control" value="<% if(path === '/editMarks'){%><%= marks[5] %><%} %>" required> <br>
+
+                <label>Fluid Mechanies I</label> <br>
+                <input type="text" name="data[Fluid Mechanies I]" class="form-control" value="<% if(path === '/editMarks'){%><%= marks[6] %><%} %>" required> <br>
+
+                <label>Theory of Machines II</label> <br>
+                <input type="text" name="data[Theory of Machines II]" class="form-control" value="<% if(path === '/editMarks'){%><%= marks[7] %><%} %>" required> <br>
+
+            <% } else if(year === "Fifth Year") { %>
+                <label>Engineering Management</label> <br>
+                <input type="text" name="data[Engineering Management]" class="form-control" value="<% if(path === '/editMarks'){%><%=marks[0] %><%}%>" required> <br>
+
+                <label>Internal Combustion Engines</label> <br>
+                <input type="text" name="data[Internal Combustion Engines]" class="form-control" value="<%if(path === '/editMarks'){%><%=marks[1]%><%}%>" required> <br>
+
+                <label>Refrigeration and Air-Conditioning</label> <br>
+                <input type="text" name="data[Refrigeration and Air-Conditioning]" class="form-control" value="<% if(path === '/editMarks'){%><%=marks[2]%><%} %>" required> <br>
+
+                <label>Vibration and Control</label> <br>
+                <input type="text" name="data[Vibration and Control]" class="form-control" value="<% if(path === '/editMarks'){%><%=marks[3]%><%} %>" required> <br>
+
+                <label>Fluid Mechanics II</label> <br>
+                <input type="text" name="data[Fluid Mechanics II]" class="form-control" value="<% if(path === '/editMarks'){%><%= marks[4] %><%} %>" required> <br>
+
+                <label>Gas Turbine Theory</label> <br>
+                <input type="text" name="data[Gas Turbine Theory]" class="form-control" value="<% if(path === '/editMarks'){%><%= marks[5] %><%} %>" required> <br>
+
+            <% } %>
+
+        <input type="hidden" name="major" value="<%= major %>">
+        <input type="hidden" name="year" value="<%= year %>">
+        <input type="hidden" name="acadamicYear" value="<%= acadamicYear %>">
+        <input type="hidden" name="examType" value="<%= examType %>">
+                
+        <% if(path === "/inputMarks") { %>
+            <button class="btn btn-primary form-control">Set Data</button>
+            <a href="/inputMarkOption?semester=<%= examType %>" class="btn btn-outline-danger form-control mt-3">Cancle</a>
+        <% } else { %>
+            <input type="hidden" name="id" value="<%= id %>">
+            <button class="btn btn-primary form-control">Update</button>
+            <a href="javascript:history.back()" class="btn btn-outline-danger form-control mt-3">Cancle</a>
+        <% } %>
+
+    </form>
+</div>
+
+
+<%- include("../partial/footer.ejs") %>

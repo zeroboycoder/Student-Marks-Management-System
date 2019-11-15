@@ -1,0 +1,98 @@
+<%- include("./partial/header.ejs") %>
+
+<%- include("./partial/navagation.ejs") %>
+
+<% if(result.length > 0) { %>
+    <% result.forEach(student => { %>
+        <div class="container-fluid">
+            <table class="table table-hover table-sm" style="width:500px;">
+                <tr>
+                    <td>
+                        <h4>Student ID </h4>
+                    </td>
+                    <td>
+                        <h4> - </h4>
+                    </td>
+                    <td>
+                        <h4><%= student.studentId %></h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Student Name</h4>
+                    </td>
+                    <td>
+                        <h4> - </h4>
+                    </td>
+                    <td>
+                        <h4><%= student.studentName %></h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Major</h4>
+                    </td>
+                    <td>
+                        <h4> - </h4>
+                    </td>
+                    <td>
+                        <h4><%= student.major %></h4>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <% student.data.forEach(data => { %>
+                <h3><%= data.year %>( <%= data.acadamicYear %> )</h3>
+                <h4> Roll No - <%= data.rollno %></h4>
+                <table class="table table-striped">
+                    <tr>
+                        <td></td>
+                        <% data.subjects.forEach(subject => { %>
+                        <td><%= subject %></td>
+                        <% }) %>
+                        <td></td>
+                    </tr>
+                    <% data.semester.forEach(semester => { %>
+                        <tr>
+                            <td> <%= semester.examType %></td>
+                            <% semester.marks.forEach(mark => { %>
+                                <td> <%= mark %> </td>
+                            <% }) %>
+                            <td id="button">
+                                <span style="float: left;">
+                                    <form action="/students/<%= student._id %>/edit" method="POST">
+                                        <input type="hidden" name="studentId" value="<%= student.studentId %>">
+                                        <input type="hidden" name="studentName" value="<%= student.studentName %>">
+                                        <input type="hidden" name="rollno" value="<%= data.rollno %>">
+                                        <input type="hidden" name="year" value="<%= data.year %>">
+                                        <input type="hidden" name="acadamicYear" value="<%= data.acadamicYear %>">
+                                        <input type="hidden" name="major" value="<%= student.major %>">
+                                        <input type="hidden" name="examType" value="<%= semester.examType %>">
+                                        <button class="btn btn-outline-success btn-sm">Edit</button>
+                                    </form>
+                                </span>
+                                <span style="float: right;">
+                                    <form action="/students/<%= student._id %>/delete" method="POST">
+                                        <input type="hidden" name="dataId" value="<%= data._id %>">
+                                        <input type="hidden" name="semesterId" value="<%= semester._id %>">
+                                        <input type="hidden" name="studentId" value="<%= student.studentId %>">
+                                        <input type="hidden" name="year" value="<%= data.year %>">
+                                        <input type="hidden" name="acadamicYear" value="<%= data.acadamicYear %>">
+                                        <input type="hidden" name="examType" value="<%= semester.examType %>">
+                                        <button class="btn btn-outline-danger btn-sm">Delete</button>
+                                    </form>
+                                </span>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </table>
+                <% }) %>
+            </div>
+        </div>
+    <% }) %>
+<% } else { %>
+    <h2>Student Not Found !</h2>
+<% } %>
+
+
+<%- include("./partial/footer.ejs") %>

@@ -1,0 +1,29 @@
+<%- include("./partial/header.ejs") %>
+
+<%- include("./partial/navagation.ejs") %>
+
+<% if(results.length > 0) { %>
+    <div style="margin-bottom: 1.5rem;">
+        <ul class="list-group">
+            <li class="list-group-item"><h3>Searched Data</h3></li>
+            <li class="list-group-item">Major - <%= major %></li>
+            <li class="list-group-item">Year - <%= year %></li>
+            <li class="list-group-item">Acadamic Year - <%= acadamicYear %></li>
+        </ul>
+    </div>
+    <% results.forEach(result => { %>
+        <div class="card">
+            <div class="card-header">
+                <%= result.studentId %>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><%= result.studentName %></h5>
+                <a href="/students/<%= result._id %>?year=<%= year %>" class="btn btn-outline-secondary">Detail</a>
+            </div>
+        </div>
+    <% }) %>
+ <% } else { %>
+     <h1> Nothing to show!</h1>
+ <% } %>
+
+<%- include("./partial/footer.ejs") %>

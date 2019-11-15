@@ -1,0 +1,71 @@
+body {
+    font-family: sans-serif;
+    padding: 0;
+    margin: 0;
+    background: #efefef !important;
+}
+
+#button{
+    width: 8rem;
+}
+
+.center{
+    margin-top: 1rem;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+select:hover,
+select:active{
+    cursor: pointer;
+}
+
+.option{
+    width: 25rem;
+    max-width: 90%;
+    border: 1px solid rgba(189, 189, 189, 0.651);
+    border-radius: 3px;
+    margin: 1rem auto 0px auto;
+}
+
+.option:hover{
+    box-shadow: 0px 2px 8px 1px rgb(167, 167, 167);
+}
+
+#option-examType{
+    padding: 0.5rem;
+}
+
+.form{
+    width: 80%;
+    margin: 0px auto;
+}
+
+.form-option{
+    background-color: rgba(184, 184, 184, 0.685);
+    padding: 0.5rem;
+}
+
+.form-option--nobgcolor{
+    padding: 0.5rem;
+}
+
+.message{
+    width: 45rem;
+    max-width: 85%;
+    text-align: center;
+    margin: 7px auto 0px auto;
+    border: 1px solid gray;
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+.message-error{
+    background-color: rgb(255, 169, 169);
+    border: 1px solid rgb(255, 94, 94);
+}
+
+.message-success{
+    background-color: rgb(172, 255, 169);
+    border: 1px solid rgb(94, 255, 134);
+}
